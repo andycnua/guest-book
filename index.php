@@ -25,6 +25,8 @@ if(isset($_POST['add']))
 		$guest->name = $_POST['name'];
 		$guest->email = $_POST['email'];
 		$guest->text = $_POST['message'];
+		$guest->date = date("m.d.Y");
+		$guest->time = date("h:i");
 
 		R::store($guest);
 	}
@@ -49,7 +51,7 @@ $guests = R::getAll('SELECT * FROM guests');
 
 foreach ($guests as $guest)
 {
-	echo $guest['name'] . '  ' . $guest['text'] . '<br>';
+	echo $guest['date'] . ' ' . $guest['time'] . ' ' . $guest['name'] . '  ' . $guest['text'] . '<br>';
 }
 
 ?>
